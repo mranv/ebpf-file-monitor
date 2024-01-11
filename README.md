@@ -51,31 +51,8 @@ cargo build --release
 
 ## Usage
 
-Explain how users can use your project. Include examples, command-line options, or any relevant details about the user interface.
 
 ```bash
 # Run the compiled binary
 ./target/release/ebpf-file-monitor
 ```
-
-## Configuration
-
-If applicable, describe how users can configure your project. Include information about configuration files, environment variables, or any customization options.
-
-## Contributing
-
-Explain how others can contribute to your project. Include guidelines for submitting bug reports, feature requests, or pull requests. Provide information about your development workflow and coding standards.
-
-## License
-
-Specify the license under which your project is distributed. Include a link to the license file if applicable.
-
-## Acknowledgments
-
-Acknowledge any contributors, libraries, or resources that have inspired or helped your project.
-
----
-**Note:** Customize the table of contents and sections based on your project's specific needs. Add badges, logos, or images to enhance the visual appeal of your README. Provide as much information as necessary to help users understand, use, and contribute to your project.
-```
-
-\
