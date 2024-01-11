@@ -1,4 +1,3 @@
-Here is the fixed table of contents:
 
 # ebpf-file-monitor
 
@@ -38,7 +37,7 @@ This program monitors a specified file for changes using inotify on Linux. It pr
 ## Example Output
 
 ```
-File '/home/user/file.txt' opened at: 2022-07-19T19:32:58.927315500+00:00
+File '/home/mranv/Desktop/ebpf-file-monitor/example.txt' opened at: 2022-07-19T19:32:58.927315500+00:00
 ```
 
 ## Dependencies
@@ -99,4 +98,3 @@ Simply follow the below steps.
 ./target/release/ebpf-file-monitor  
 ```
 
-Let me know if you need any other changes to the table of contents!
