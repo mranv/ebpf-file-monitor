@@ -11,3 +11,4 @@ bcc = "0.0.34"
 chrono = "0.4"
 tokio = { version = "1", features = ["full"] }
 inotify = "0.10.0"
+notify = "4"
