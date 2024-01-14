@@ -1,100 +1,66 @@
+# ebpf-file-monitor 
 
-# ebpf-file-monitor
-
-`ebpf-file-monitor` is a Rust program that monitors file modifications using the inotify API. This utility allows users to track changes in a specified file and prints a timestamp when modifications occur.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-
-## Introduction
-
-This program monitors a specified file for changes using inotify on Linux. It prints a message when the file is modified. 
-
-## Code Overview
-
-- An `Inotify` instance is created to interface with inotify.
-
-- A watch is added for the target file for `MODIFY` events.
-
-- An infinite loop runs which:
-
-  - Calls `handle_events` to handle any events synchronously.
-
-  - Sleeps for the monitoring interval.
-
-- `handle_events` reads any pending events into a buffer.
-
-- The buffer is iterated through looking for `MODIFY` events.
-
-- If a modify event is found, the current time is printed.
-
-## Example Output
-
-```
-File '/home/mranv/Desktop/ebpf-file-monitor/example.txt' opened at: 2022-07-19T19:32:58.927315500+00:00
-```
-
-## Dependencies
-
-- `inotify` crate
-
-- `tokio` crate
+`ebpf-file-monitor` is a slick Rust program that keeps an eagle-eye on your files and alerts you the moment changes occur!
 
 ## Features
 
-- **File Monitoring:** Tracks modifications in the specified file.
+- Uses cutting-edge eBPF technology to trace file events 
+- Prints out a timestamp the instant your file is modified
+- Works smoothly across Linux, Windows and MacOS
 
-- **Timestamp Logging:** Prints a timestamp when the file is modified.
-  
-## Getting Started
+## Prerequisites
 
-Install all the following prerequisites
+- Rust 1.56+ (get the latest and greatest)
+- Cargo (Rust's sweet package manager)  
+- Any mainstream OS - Linux, Windows or MacOS
+- libbpf and bcc libraries (eBPF's dynamic duo)
 
-### Prerequisites
-
-- Rust 1.56+
-
-- Cargo
-
-- Linux OS (for inotify)
-
-- eBPF
-
-- bcc
-
-- build-essentials
-
-### Installation
-
-Provide step-by-step instructions on how to install your project. Include any commands or configuration needed to set it up.
+## Installation
 
 ```bash
-# Clone the repository
+# Clone this puppy 
 git clone https://github.com/mranv/ebpf-file-monitor.git
 
-# Navigate to the project directory 
-cd ebpf-file-monitor
+# Hop into the directory
+cd ebpf-file-monitor 
 
-# Build the project
+# Install bcc and libbpf if needed
+
+# For Fedora/RedHat:
+sudo yum install bcc bpf
+# For Debian/Ubuntu:
+sudo apt-get install libbpf-dev libbcc-dev
+
+# Build  
 cargo build --release
 ```
 
-## Usage 
+## Usage
 
-The file path to monitor and the monitoring interval can be configured by modifying the `FILE_PATH` and `MONITOR_INTERVAL_SECONDS` constants.
+Update the `FILE_PATH` to the file you want to keep an eye on.
 
-The program must be run on Linux as it relies on inotify.
+Let this watchdog loose:
 
-Simply follow the below steps.
-
-```bash
-# Run the compiled binary
-./target/release/ebpf-file-monitor  
+```
+./target/release/ebpf-file-monitor
 ```
 
+Now it'll print a timestamp immediately when that file changes.
+
+So you can catch co-workers messing with your stuff! Or track edits on your top secret novel.
+
+## Implementation
+
+- Uses libbpf to load sneaky eBPF programs that trace `open` and `write` syscalls.  
+- Filters for events on your target file.
+- When a modify event occurs, bam! prints the timestamp.
+- eBPF + bcc = smooth cross-platform action.
+
+## Limitations
+
+- Watches only one file at a time.
+- Needs eBPF/bcc libraries installed.
+
+## Contributions
+
+Ideas to improve this little watchdog are welcome! Woof woof!
