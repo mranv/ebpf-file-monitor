@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 bcc = "0.0.34"
 #std = { version = "0.2", features = ["slice::from_raw_parts"]}
-chrono = "0.4"
+# chrono = "0.4"
 tokio = { version = "1", features = ["full"] }
-inotify = "0.10.0"
+# inotify = "0.10.0"
 notify = "4"
