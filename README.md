@@ -1,4 +1,9 @@
-# ebpf-file-monitor 
+<h1 align="center">
+<br>
+<img src=assets/ebpf-file-monitor.png height="400" border="2px solid #555">
+<br>
+<strong>Linux based File Monitoring using eBPF</strong>
+</h1>
 
 `ebpf-file-monitor` is a slick Rust program that keeps an eagle-eye on your files and alerts you the moment changes occur!
 
