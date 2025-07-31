@@ -251,7 +251,8 @@ impl FileMonitor {
                     .output()
                 {
                     let ps_output = String::from_utf8_lossy(&output.stdout);
-                    let filename = PathBuf::from(&self.file_path)
+                    let path_buf = PathBuf::from(&self.file_path);
+                    let filename = path_buf
                         .file_name()
                         .and_then(|n| n.to_str())
                         .unwrap_or("");
@@ -280,7 +281,8 @@ impl FileMonitor {
                     .output()
                 {
                     let ps_output = String::from_utf8_lossy(&output.stdout);
-                    let filename = PathBuf::from(&self.file_path)
+                    let path_buf = PathBuf::from(&self.file_path);
+                    let filename = path_buf
                         .file_name()
                         .and_then(|n| n.to_str())
                         .unwrap_or("");
