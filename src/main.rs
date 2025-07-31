@@ -4,12 +4,12 @@ use std::time::SystemTime;
 use inotify::{Inotify, WatchMask, EventMask, WatchDescriptor};
 use tokio::time::{sleep, Duration};
 
-const FILE_PATH: &str = "/home/mranv/Desktop/ebpf-file-monitor/example.txt";
+const FILE_PATH: &str = "/home/anubhavg/Desktop/ebpf-file-monitor/example.txt";
 const MONITOR_INTERVAL_SECONDS: u64 = 1;
 
 #[tokio::main]
 async fn main() {
-  let mut inotify = Inotify::init().expect("Failed to initialize inotify");  
+  let mut inotify = Inotify::init().expect("Failed to initialize inotify");
 
   let watch_descriptor = inotify
     .watches()
@@ -24,7 +24,7 @@ async fn main() {
 }
 
 async fn handle_events(inotify: &mut Inotify, _watch_descriptor: &WatchDescriptor) {
-  
+
   let mut buffer = [0u8; 4096];
 
   match inotify.read_events_blocking(&mut buffer) {
@@ -33,7 +33,7 @@ async fn handle_events(inotify: &mut Inotify, _watch_descriptor: &WatchDescripto
         if event.mask.contains(EventMask::ACCESS) {
           let now = SystemTime::now();
           println!("File '{}' accessed at: {:?}", FILE_PATH, now);
-        }  
+        }
       }
     }
     Err(e) => eprintln!("Error reading events: {}", e),
