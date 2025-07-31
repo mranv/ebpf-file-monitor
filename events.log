@@ -5,3 +5,289 @@
 [2025-07-31 07:54:09.245] ATTRIB - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: File attributes changed
 [2025-07-31 07:54:09.245] DELETE_SELF - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: Watched file was deleted
 [2025-07-31 07:55:39.471] MONITOR_STOP - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: File monitoring stopped
+
+================================================================================
+[2025-07-31 08:23:48.182] EVENT: MONITOR_START
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File monitoring started
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:23:56.787] EVENT: OPEN
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was opened
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:23:57.153] EVENT: ACCESS
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was read/accessed
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:23:57.514] EVENT: CLOSE_NOWRITE
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File closed without modification
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:01.221] EVENT: OPEN
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was opened
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:01.617] EVENT: ACCESS
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was read/accessed
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:01.983] EVENT: CLOSE_NOWRITE
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File closed without modification
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:02.354] EVENT: OPEN
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was opened
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:02.732] EVENT: ACCESS
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was read/accessed
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:03.123] EVENT: CLOSE_NOWRITE
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File closed without modification
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:23.911] EVENT: OPEN
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was opened
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:24.281] EVENT: ACCESS
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File was read/accessed
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
+
+================================================================================
+[2025-07-31 08:24:24.648] EVENT: CLOSE_NOWRITE
+================================================================================
+
+📄 FILE INFORMATION:
+   Path: /home/anubhavg/Desktop/ebpf-file-monitor/example.txt
+   Type: regular file
+   Size: 33 bytes
+   Permissions: -rw-rw- (0664)
+   Owner: anubhavg (1000) / Group: anubhavg (1000)
+   Inode: 3833887 / Links: 1
+   Modified: 2025-07-31 08:10:04
+   Accessed: 2025-07-31 08:10:04
+
+🔍 OPERATION DETAILS:
+   Description: File closed without modification
+   Size Change: +0 bytes
+
+🖥️  MONITOR PROCESS:
+   PID: 1077906 / Name: ebpf-file-monit
+
