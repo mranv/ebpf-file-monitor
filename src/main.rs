@@ -15,6 +15,9 @@ use tokio::signal;
 use tokio::sync::Mutex;
 use tokio::time::{sleep, Duration};
 
+mod process_tracker;
+use process_tracker::{ProcessTracker, identify_operation_source};
+
 #[derive(Parser, Debug)]
 #[command(author, version, about = "Production-ready eBPF file monitor", long_about = None)]
 struct Args {
@@ -47,6 +50,7 @@ struct FileEvent {
     process_cmd: Option<String>,
     user_id: Option<u32>,
     details: String,
+    operation_source: Option<String>,
 }
 
 struct FileMonitor {
@@ -103,6 +107,13 @@ impl FileMonitor {
         let now = Local::now();
         let (pid, name, cmd, uid) = self.get_process_info();
         
+        // Get the actual operation source
+        let operation_source = if event_type != "MONITOR_START" && event_type != "MONITOR_STOP" {
+            Some(identify_operation_source(&self.file_path, event_type))
+        } else {
+            None
+        };
+        
         FileEvent {
             timestamp: now,
             timestamp_unix: now.timestamp(),
@@ -116,6 +127,7 @@ impl FileMonitor {
             process_cmd: cmd,
             user_id: uid,
             details: details.to_string(),
+            operation_source,
         }
     }
     
@@ -125,7 +137,7 @@ impl FileMonitor {
                 serde_json::to_string(event).unwrap_or_else(|_| "Error serializing event".to_string())
             }
             OutputFormat::Text => {
-                format!(
+                let mut output = format!(
                     "[{}] {} - {} | Size: {} bytes | PID: {} ({}) | Details: {}",
                     event.timestamp.format("%Y-%m-%d %H:%M:%S%.3f"),
                     event.event_type,
@@ -134,7 +146,13 @@ impl FileMonitor {
                     event.process_id.map_or("N/A".to_string(), |p| p.to_string()),
                     event.process_name.as_deref().unwrap_or("N/A"),
                     event.details
-                )
+                );
+                
+                if let Some(source) = &event.operation_source {
+                    output.push_str(&format!(" | Operation by: {}", source));
+                }
+                
+                output
             }
         };
         
@@ -214,7 +232,19 @@ impl FileMonitor {
         let mask = event.mask;
         
         let (event_type, details) = if mask.contains(EventMask::ACCESS) {
-            ("ACCESS", "File was accessed (read)")
+            // Get more context about the access
+            let tracker = ProcessTracker::new(self.file_path.clone());
+            let access_detail = if let Some(process) = tracker.detect_operation_source() {
+                match process.name.as_str() {
+                    "cat" => "File contents displayed",
+                    "head" | "tail" => "File partially read",
+                    "grep" => "File searched",
+                    _ => "File was accessed (read)",
+                }
+            } else {
+                "File was accessed (read)"
+            };
+            ("ACCESS", access_detail)
         } else if mask.contains(EventMask::MODIFY) {
             let current_size = self.get_file_size().await;
             let last_size = *self.last_size.lock().await;

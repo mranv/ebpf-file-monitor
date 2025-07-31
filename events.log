@@ -1,0 +1,7 @@
+[2025-07-31 07:53:46.878] MONITOR_START - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: 16 bytes | PID: 1037361 (ebpf-file-monit) | Details: File monitoring started
+[2025-07-31 07:53:58.320] OPEN - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: 16 bytes | PID: 1037361 (ebpf-file-monit) | Details: File was opened
+[2025-07-31 07:53:58.320] ACCESS - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: 16 bytes | PID: 1037361 (ebpf-file-monit) | Details: File was accessed (read)
+[2025-07-31 07:53:58.320] CLOSE_NOWRITE - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: 16 bytes | PID: 1037361 (ebpf-file-monit) | Details: File closed without writing
+[2025-07-31 07:54:09.245] ATTRIB - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: File attributes changed
+[2025-07-31 07:54:09.245] DELETE_SELF - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: Watched file was deleted
+[2025-07-31 07:55:39.471] MONITOR_STOP - /home/anubhavg/Desktop/ebpf-file-monitor/example.txt | Size: N/A bytes | PID: 1037361 (ebpf-file-monit) | Details: File monitoring stopped
