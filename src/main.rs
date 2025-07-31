@@ -6,8 +6,8 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 use chrono::{DateTime, Local};
 use clap::Parser;
-use inotify::{Inotify, WatchMask, EventMask, WatchDescriptor};
-use log::{info, error, warn};
+use inotify::{Inotify, WatchMask, EventMask};
+use log::{info, error};
 use procfs::process::Process;
 use serde::{Serialize, Deserialize};
 use serde_json;
@@ -213,7 +213,7 @@ impl FileMonitor {
     async fn process_event(&self, event: &inotify::Event<&std::ffi::OsStr>) -> Option<(String, String)> {
         let mask = event.mask;
         
-        let (event_type, mut details) = if mask.contains(EventMask::ACCESS) {
+        let (event_type, details) = if mask.contains(EventMask::ACCESS) {
             ("ACCESS", "File was accessed (read)")
         } else if mask.contains(EventMask::MODIFY) {
             let current_size = self.get_file_size().await;
