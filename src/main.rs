@@ -165,7 +165,8 @@ impl FileMonitor {
     /// Try multiple methods to detect who accessed the file
     async fn detect_file_accessor(&self, event_type: &str) -> String {
         // Method 1: Check recent processes from our cache
-        if let Ok(recent) = self.recent_processes.lock().await {
+        {
+            let recent = self.recent_processes.lock().await;
             if let Some(proc_info) = recent.get(event_type) {
                 return format!("{} (PID: {}, User: {})", 
                     proc_info.name, proc_info.pid, proc_info.username);
