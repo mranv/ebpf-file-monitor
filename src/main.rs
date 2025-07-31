@@ -56,7 +56,6 @@ struct FileEvent {
 struct ProcessInfo {
     pid: i32,
     name: String,
-    cmd: String,
     username: String,
 }
 
@@ -99,68 +98,6 @@ impl FileMonitor {
         }
     }
     
-    /// Use auditctl to track file access (requires root)
-    fn setup_audit_watch(&self) -> Result<(), Box<dyn std::error::Error>> {
-        // Try to set up audit watch (this requires root)
-        let _ = Command::new("sudo")
-            .args(&["auditctl", "-w", &self.file_path, "-p", "rwxa"])
-            .output();
-        Ok(())
-    }
-    
-    /// Get recent audit events for the file
-    fn get_audit_events(&self) -> Vec<ProcessInfo> {
-        let mut processes = Vec::new();
-        
-        // Try ausearch for recent events
-        if let Ok(output) = Command::new("sudo")
-            .args(&["ausearch", "-f", &self.file_path, "-ts", "recent", "-i"])
-            .output()
-        {
-            let output_str = String::from_utf8_lossy(&output.stdout);
-            // Parse ausearch output for process information
-            for line in output_str.lines() {
-                if line.contains("pid=") && line.contains("comm=") {
-                    if let Some(proc_info) = self.parse_audit_line(line) {
-                        processes.push(proc_info);
-                    }
-                }
-            }
-        }
-        
-        processes
-    }
-    
-    fn parse_audit_line(&self, line: &str) -> Option<ProcessInfo> {
-        let mut pid = None;
-        let mut comm = None;
-        let mut user = None;
-        
-        // Parse audit log format
-        for part in line.split_whitespace() {
-            if part.starts_with("pid=") {
-                pid = part.trim_start_matches("pid=").parse::<i32>().ok();
-            } else if part.starts_with("comm=") {
-                comm = Some(part.trim_start_matches("comm=").trim_matches('"').to_string());
-            } else if part.starts_with("auid=") {
-                // Get username from audit uid
-                if let Ok(uid) = part.trim_start_matches("auid=").parse::<u32>() {
-                    user = self.get_username_from_uid(uid);
-                }
-            }
-        }
-        
-        if let (Some(pid), Some(name)) = (pid, comm) {
-            Some(ProcessInfo {
-                pid,
-                name: name.clone(),
-                cmd: name,
-                username: user.unwrap_or_else(|| "unknown".to_string()),
-            })
-        } else {
-            None
-        }
-    }
     
     /// Try multiple methods to detect who accessed the file
     async fn detect_file_accessor(&self, event_type: &str) -> String {
@@ -392,9 +329,6 @@ impl FileMonitor {
         let mut inotify = Inotify::init()?;
         
         let path_buf = PathBuf::from(&self.file_path);
-        
-        // Try to set up audit watch for better process tracking
-        let _ = self.setup_audit_watch();
         
         // Monitor all relevant events
         let watch_mask = WatchMask::ACCESS
