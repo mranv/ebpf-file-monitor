@@ -8,7 +8,14 @@ edition = "2021"
 [dependencies]
 bcc = "0.0.34"
 #std = { version = "0.2", features = ["slice::from_raw_parts"]}
-chrono = "0.4"
-tokio = { version = "1", features = ["full"] }
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full", "signal"] }
 inotify = "0.10.0"
 notify = "4"
+procfs = "0.16"
+nix = "0.28"
+log = "0.4"
+env_logger = "0.11"
