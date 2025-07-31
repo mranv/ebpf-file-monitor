@@ -280,6 +280,7 @@ dependencies = [
  "env_logger",
  "futures",
  "inotify 0.10.2",
+ "libc",
  "log",
  "nix",
  "notify",
