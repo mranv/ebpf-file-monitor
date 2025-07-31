@@ -9,7 +9,7 @@ use std::collections::HashMap;
 use chrono::{DateTime, Local};
 use clap::Parser;
 use inotify::{Inotify, WatchMask, EventMask};
-use log::{info, error, debug};
+use log::{info, error};
 use serde::{Serialize, Deserialize};
 use serde_json;
 use tokio::signal;
